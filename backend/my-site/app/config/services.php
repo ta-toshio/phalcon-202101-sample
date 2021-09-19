@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 use Phalcon\Escaper;
 use Phalcon\Flash\Direct as Flash;
+use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Php as PhpEngine;
@@ -120,3 +121,17 @@ $di->setShared('session', function () {
 
     return $session;
 });
+
+
+$di->set(
+    'dispatcher',
+    function () {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setDefaultNamespace(
+            'App\Controllers'
+        );
+
+        return $dispatcher;
+    }
+);
