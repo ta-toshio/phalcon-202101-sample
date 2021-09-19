@@ -49,21 +49,21 @@ services:
         source: ./backend
         target: /work/backend
 
-  # db:
-  #   build:
-  #     context: .
-  #     dockerfile: ./infra/docker/mysql/Dockerfile
-  #   ports:
-  #     - target: 3306
-  #       published: 8076
-  #       protocol: tcp
-  #       mode: host
-  #   volumes:
-  #     - type: bind
-  #       source: ./var/mysql
-  #       target: /var/lib/mysql
-  #   environment:
-  #     - MYSQL_DATABASE=mydatabase
-  #     - MYSQL_USER=myuser
-  #     - MYSQL_PASSWORD=secret
-  #     - MYSQL_ROOT_PASSWORD=secret
+  db:
+    build:
+      context: .
+      dockerfile: ./infra/docker/mysql/Dockerfile
+    ports:
+      - target: 3306
+        published: 8076
+        protocol: tcp
+        mode: host
+    volumes:
+      - type: bind
+        source: ./var/mysql
+        target: /var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=mydatabase
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
