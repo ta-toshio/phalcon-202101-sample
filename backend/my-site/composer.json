@@ -1,6 +1,13 @@
 {
     "require-dev": {
         "phalcon/devtools": "^4.2",
-        "phalcon/migrations": "^2.2"
+        "phalcon/migrations": "^2.2",
+        "phalcon/incubator-test": "^v1.0.0-alpha.1",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
     }
 }
