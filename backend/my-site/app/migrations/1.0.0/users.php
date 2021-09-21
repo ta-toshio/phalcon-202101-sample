@@ -42,10 +42,41 @@ class UsersMigration_100 extends Migration
                         'after' => 'id'
                     ]
                 ),
+                new Column(
+                    'email',
+                    [
+                        'type' => Column::TYPE_VARCHAR,
+                        'default' => "",
+                        'notNull' => true,
+                        'size' => 255,
+                        'after' => 'name'
+                    ]
+                ),
+                new Column(
+                    'password',
+                    [
+                        'type' => Column::TYPE_VARCHAR,
+                        'default' => "",
+                        'notNull' => true,
+                        'size' => 255,
+                        'after' => 'email'
+                    ]
+                ),
+                new Column(
+                    'active',
+                    [
+                        'type' => Column::TYPE_TINYINTEGER,
+                        'default' => "0",
+                        'notNull' => true,
+                        'size' => 1,
+                        'after' => 'password'
+                    ]
+                ),
             ],
             'indexes' => [
                 new Index('PRIMARY', ['id'], 'PRIMARY'),
                 new Index('id', ['id'], 'UNIQUE'),
+                new Index('email', ['email'], ''),
             ],
             'options' => [
                 'TABLE_TYPE' => 'BASE TABLE',
@@ -84,6 +115,9 @@ class UsersMigration_100 extends Migration
         $this->batchInsert('users', [
             'id',
             'name',
+            'email',
+            'password',
+            'active',
         ]);
     }
 }
