@@ -9,6 +9,8 @@ define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
 
+(new \Phalcon\Debug())->listen();
+
 try {
     include '../../vendor/autoload.php';
 
